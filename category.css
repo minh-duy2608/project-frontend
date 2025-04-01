@@ -162,23 +162,24 @@
   right: 16px;
 }
 
-.categoty-table {
+.category-table {
   width: 100%;
   border-collapse: collapse;
+  background-color: #fff;
 }
 
-.categoty-table thead tr {
-  height: 40px;
-  padding: 0 16px;
-  background-color: #f9fafb;
-  border: 1px solid #dadada;
+.category-table th {
+    text-align: left;
+    padding: 12px;
+    background-color: #f9fafb;
+    color: #667085;
 }
 
-.categoty-table tbody tr td {
-  height: 40px;
-  padding: 0 16px;
-  border: 1px solid #dadada;
+.category-table td {
+    padding: 12px;
+    border-bottom: 1px solid #dadada;
 }
+
 
 .status {
   display: flex;
@@ -196,7 +197,7 @@
 }
 
 .status-inactive {
-  background-color: #ecfdf3;
+  background-color:  #fde8e8;
   color: #c84c4c;
 }
 
@@ -240,6 +241,8 @@
 
 .container {
     display: flex;
+    height: 100vh;
+    overflow: hidden;
 }
 
 .content {
@@ -291,10 +294,42 @@
     align-items: center;
 }
 
-.trash{
-    width: 20px;
+
+.trash, .pen {
+    width: 18px;
+    margin: 0 6px;
+    cursor: pointer;
+    
 }
 
-.pen{
-    width: 20px;
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.page-btn {
+    padding: 6px 12px;
+    border: 1px solid #dadada;
+    background: white;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.page-btn.active {
+    background: #4094f7;
+    color: white;
+}
+
+.page-btn:hover {
+    background: #3386e5;
+    color: white;
+}
+
+.arrow-left, .arrow-right{
+    width: 16px;
 }
