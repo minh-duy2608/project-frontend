@@ -2,7 +2,7 @@
 }
 
 .sidebar {
-    width: 200px;
+    width: 210px;
     height: 100vh;
     background-color: #f8f9fa;
     padding: 16px;
@@ -242,18 +242,11 @@
     display: flex;
 }
 
-.menu {
-    background-color: red;
-    height: 100vh;
-    width: 200px;
-}
-
 .content {
     flex: 1;
 }
 
 .header {
-    background-color: green;
     height: 56px;
     padding: 16px;
 }
