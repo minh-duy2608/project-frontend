@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="shortcut icon"
+      href="https://learn.rikkeiacademy.com/favicon.ico.png"
+      type="image/x-icon"
+    />
+    <title>Quản lý danh mục</title>
+    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
+    <link rel="stylesheet" href="../css/category.css" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <menu class="menu">
+        <div class="sidebar">
+          <div class="sidebar-header">
+            <img
+              src="../assets/icons/book.png"
+              alt="Study Tracker Logo"
+              class="logo"
+            />
+            <span class="sidebar-title">Study Tracker</span>
+          <span class="sidebar-subtitle">Quản lý tiến độ học tập</span>
+          </div>
+
+          <nav class="sidebar-menu">
+            <a href="#" class="menu-item">
+              <img
+                class="item-1"
+                src="../assets/icons/staticarrow.png"
+                alt=""
+              />
+              <span>Thống kê</span>
+            </a>
+            <a href="#" class="menu-item">
+              <img class="item-2" src="../assets/icons/control-1.png" alt="" />
+              <span>Quản lý môn học</span>
+            </a>
+            <a href="#" class="menu-item">
+              <img class="item-3" src="../assets/icons/control-2.png" alt="" />
+              <span>Quản lý bài học</span>
+            </a>
+          </nav>
+        </div>
+        <menu class="menu">
+          <a href="./index.html">Trang chủ</a>
+          <a href="./category.html">Quản lý danh mục</a>
+          <a href="./product.html">Quản lý sản phẩm</a>
+        </menu>
+      </menu>
+      <div class="content">
+        <header class="header">
+          <div class="icon-1">
+            <img class="img-1" src="../assets/icons/quarter.png" alt="" />
+          </div>
+          <div class="icon-2">
+            <img class="img-2" src="../assets/icons/bell.png" alt="" />
+            <img class="img-3" src="../assets/icons/question.png" alt="" />
+            <img class="img-3" src="../assets/icons/setting.png" alt="" />
+            <img class="img-4" src="../assets/icons/ava.png" alt="" />
+          </div>
+        </header>
+        <main class="main">
+          <div class="category-manager">
+            <!-- Phạm vi của phần tiêu đề -->
+            <div class="category-header">
+              <h3 class="category-title">Môn học</h3>
+              <div class="category-function">
+                <select class="select">
+                  <option value="">Lọc theo trạng thái</option>
+                  <option value="">Đang hoạt động</option>
+                  <option value="">Ngừng hoạt động</option>
+                </select>
+                <button id="buttonAddCategory" class="button">
+                  Thêm mới môn học
+                </button>
+              </div>
+            </div>
+
+            <!-- Phạm vi của phần chức năng -->
+            <div class="category-search">
+              <div class="input-search-container">
+                <input
+                  class="input-search"
+                  type="text"
+                  placeholder="Tìm kiếm môn học theo tên..."
+                />
+                <img
+                  class="search-icon"
+                  src="../assets/icons/search.png"
+                  alt=""
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Danh sách danh mục -->
+          <table border="1" class="categoty-table">
+            <thead>
+              <tr>
+                <th style="color: #667085;">Tên môn học <span><img style="width: 10px;" src="../assets/icons/downarrow.png" alt=""></span></th>
+                <th style="color: #667085;">Trạng thái</th>
+                <th style="color: #667085;" colspan="3">Chức năng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lập trình C</td>
+                <td>
+                  <div class="status status-active">
+                    <div class="dot active"></div>
+                    <span>Đang hoạt động</span>
+                  </div>
+                </td>
+                <td>
+                  <i class="fa-solid fa-pen"></i>
+                </td>
+                <td>
+                  <i class="fa-solid fa-trash"></i>
+                </td>
+              </tr>
+              <tr>
+                <td>Lập trình frontend</td>
+                <td>
+                  <div class="status status-inactive">
+                    <div class="dot inactive"></div>
+                    <span>Ngừng hoạt động</span>
+                  </div>
+                </td>
+                <td>
+                  <i class="fa-solid fa-pen"></i>
+                </td>
+                <td>
+                  <i class="fa-solid fa-trash"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Phần phân trang -->
+          <!-- <div class="pagination">
+            <button class="button-prev">
+              <i class="fa-solid fa-arrow-left"></i>
+            </button>
+            <button class="button-number">1</button>
+            <button class="button-number">2</button>
+            <button class="button-number">3</button>
+            <button class="button-next">
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div> -->
+        </main>
+      </div>
+    </div>
+
+    <!-- Form thêm mới / cập nhật danh mục -->
+    <div style="display: none" id="formCategory" class="overlay">
+      <form class="form-category">
+        <div class="form-header">
+          <h3>Thêm mới danh mục</h3>
+          <i id="iconCloseFormCategory" class="fa-solid fa-xmark"></i>
+        </div>
+
+        <div class="form-body"></div>
+
+        <div class="form-footer">
+          <button id="btnCloseFormCategory">Hủy</button>
+          <button>Thêm</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="../js/category.js"></script>
+  </body>
+</html>
