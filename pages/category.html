@@ -132,9 +132,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -147,9 +147,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -162,9 +162,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -177,9 +177,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -192,9 +192,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -207,9 +207,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -222,9 +222,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
               <tr>
@@ -237,9 +237,9 @@
                 </td>
                 <td>
                   <img class="trash" src="../assets/icons/trash.png" alt="">
+                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
                 <td>
-                 <img class="pen" src="../assets/icons/pen.png" alt="">
                 </td>
               </tr>
             </tbody>
@@ -250,7 +250,7 @@
             <button class="page-btn prev"><img class="arrow-left" src="../assets/icons/arrow left.png" alt=""></button>
             <button class="page-btn">1</button>
             <button class="page-btn">2</button>
-            <button class="page-btn active">3</button>
+            <button class="page-btn">3</button>
             <button class="page-btn">4</button>
             <button class="page-btn">5</button>
             <button class="page-btn next"><img class="arrow-right" src="../assets/icons/arrow right.png" alt=""></button>
@@ -263,19 +263,85 @@
     <div style="display: none" id="formCategory" class="overlay">
       <form class="form-category">
         <div class="form-header">
-          <h3>Thêm mới danh mục</h3>
-          <i id="iconCloseFormCategory" class="fa-solid fa-xmark"></i>
+          <h3>Thêm mới môn học</h3>
+          <img width="24px" id="iconCloseFormCategory" src="../assets/icons/close.png" alt="">
         </div>
 
-        <div class="form-body"></div>
-
+        <div class="form-body">
+          <label class="form-label">Tên môn học</label>
+          <input type="text" id="nameEdit" class="form-control" />
+        </div>
         <div class="form-footer">
-          <button id="btnCloseFormCategory">Hủy</button>
-          <button>Thêm</button>
+          <label class="form-label">Trạng thái</label>
+          <div class="changeActive">
+            <input
+              type="radio"
+              id="activeEdit"
+              name="statusEdit"
+              value="active"
+            />
+            <label for="active">Đang hoạt động</label>
+            <input
+              type="radio"
+              id="inactiveEdit"
+              name="statusEdit"
+              value="inactive"
+              class="ms-3"
+            />
+            <label for="inactive">Ngừng hoạt động</label>
+          </div>
         </div>
+        <div class="foot">
+          <button id="btnCloseFormCategory">Hủy</button>
+          <button id="btnAddFormCategory" >Thêm</button>
+        </div>
+      </div>
       </form>
     </div>
 
-    <script src="../js/category.js"></script>
+
+
+    <div style="display: none" id="formCategoryy" class="overlayy">
+      <form class="form-categoryy">
+        <div class="form-headerr">
+          <h3>Cập nhật môn học</h3>
+          <img width="24px" id="iconCloseFormCategoryy" src="../assets/icons/close.png" alt="">
+        </div>
+
+        <div class="form-bodyy">
+          <label class="form-labell">Tên môn học</label>
+          <input type="text" id="nameEditt" class="form-controll" />
+        </div>
+        <div class="form-footerr">
+          <label class="form-labell">Trạng thái</label>
+          <div class="changeActivee">
+            <input
+              type="radio"
+              id="activeEditt"
+              name="statusEditt"
+              value="active"
+            />
+            <label for="active">Đang hoạt động</label>
+            <input
+              type="radio"
+              id="inactiveEditt"
+              name="statusEditt"
+              value="inactive"
+              class="ms-33"
+            />
+            <label for="inactive">Ngừng hoạt động</label>
+          </div>
+        </div>
+        <div class="foott">
+          <button id="btnCloseFormCategoryy">Hủy</button>
+          <button id="btnAddFormCategoryy" >Thêm</button>
+        </div>
+      </div>
+      </form>
+    </div>
+
+
+    <script src="../js/category-manager.js"></script>
+    <script src="../js/update-manager.js"></script>
   </body>
 </html>

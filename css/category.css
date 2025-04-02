@@ -239,6 +239,65 @@
   align-items: center;
 }
 
+.form-body{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.form-control{
+  border-radius: 8px;
+  border-width: 1px;
+  gap: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  border: 1px solid #DADADA;
+}
+
+.form-footer{
+  margin-top: 24px;
+}
+
+.changeActive{
+  margin-top: 10px;
+  margin-left: 12px;
+  gap: 5px;
+}
+
+#iconCloseFormCategory{
+  cursor: pointer;
+}
+
+.foot{
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+#btnCloseFormCategory{
+  background-color: white;
+  border: 1px solid #E4E4E7;
+  width: 50px;
+  height: 40px;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+}
+
+#btnAddFormCategory{
+  background-color: #007AFF;
+  color: white;
+  width: 60px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #007AFF;
+  cursor: pointer;
+}
+
 .container {
     display: flex;
     height: 100vh;
@@ -303,7 +362,6 @@
 }
 
 
-
 .pagination {
     display: flex;
     justify-content: center;
@@ -332,4 +390,86 @@
 
 .arrow-left, .arrow-right{
     width: 16px;
+}
+
+
+.overlayy {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-categoryy {
+  background-color: #fff;
+  width: 500px;
+  padding: 20px 24px;
+  border-radius: 8px;
+}
+
+.form-headerr {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-bodyy{
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+}
+
+.form-controll{
+  border-radius: 8px;
+  border-width: 1px;
+  gap: 8px;
+  padding-top: 12px;
+  padding-right: 16px;
+  padding-bottom: 12px;
+  padding-left: 16px;
+  border: 1px solid #DADADA;
+}
+
+.form-footerr{
+  margin-top: 24px;
+}
+
+.changeActivee{
+  margin-top: 10px;
+  margin-left: 12px;
+  gap: 5px;
+}
+
+#iconCloseFormCategoryy{
+  cursor: pointer;
+}
+
+.foott{
+  display: flex;
+  gap: 5px;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+#btnCloseFormCategoryy{
+  background-color: white;
+  border: 1px solid #E4E4E7;
+  width: 50px;
+  height: 40px;
+  border-radius: 8px;
+  color: black;
+  cursor: pointer;
+}
+
+#btnAddFormCategoryy{
+  background-color: #007AFF;
+  color: white;
+  width: 60px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #007AFF;
+  cursor: pointer;
 }
