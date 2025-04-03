@@ -1,32 +1,30 @@
 // Lấy ra các phần tử trong DOM
 const changePenElements = document.querySelectorAll("#changePen"); 
+console.log("changePen", changePenElements);
+
 changePenElements.forEach((pen) => {
   pen.addEventListener("click", handleOpenForm);
 });
 
-const formCategoryElement = document.querySelector("#formCategoryy");
-const iconCloseFormCategoryElement = document.querySelector(
+const formCategoryElementEdit = document.querySelector("#formCategoryy");
+const iconCloseFormCategoryElementEdit = document.querySelector(
   "#iconCloseFormCategoryy"
 );
-const btnCloseFormCategoryElement = document.querySelector(
+const btnCloseFormCategoryElementEdit = document.querySelector(
   "#btnCloseFormCategoryy"
 );
 
 // Hàm mở form
 function handleOpenForm() {
-  formCategoryElement.style.display = "flex";
+  formCategoryElementEdit.style.display = "flex";
 }
-x``
 // Hàm đóng form
 function handleClose() {
-  formCategoryElement.style.display = "none";
+  formCategoryElementEdit.style.display = "none";
 }
 
-// Lắng nghe sự kiện click vào button thêm mới
-changePenElements.addEventListener("click", handleOpenForm);
-
 // Lắng nghe sự kiện click vào icon đóng form
-iconCloseFormCategoryElement.addEventListener("click", handleClose);
+iconCloseFormCategoryElementEdit.addEventListener("click", handleClose);
 
 // Lắng nghe sự kiện click vào button đóng form
-btnCloseFormCategoryElement.addEventListener("click", handleClose);
+btnCloseFormCategoryElementEdit.addEventListener("click", handleClose);

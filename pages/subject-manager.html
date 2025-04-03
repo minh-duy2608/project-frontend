@@ -9,8 +9,8 @@
       type="image/x-icon"
     />
     <title>Quản lý danh mục</title>
-    <link rel="stylesheet" href="../assets/fonts/fonts.css" />
-    <link rel="stylesheet" href="../css/category.css" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/subject.css" />
     <link rel="stylesheet" href="../css/reset.css" />
     <link
       rel="stylesheet"
@@ -74,13 +74,7 @@
           <div class="category-manager">
             <!-- Phạm vi của phần tiêu đề -->
             <div class="category-header">
-              <h3 class="category-title">Môn học</h3>
-              <div class="category-function">
-                <select class="select">
-                  <option value="">Lọc theo trạng thái</option>
-                  <option value="">Đang hoạt động</option>
-                  <option value="">Ngừng hoạt động</option>
-                </select>
+              <h3 class="category-title">Bài học</h3>
                 <button id="buttonAddCategory" class="button">
                   Thêm mới môn học
                 </button>
@@ -89,28 +83,44 @@
 
             <!-- Phạm vi của phần chức năng -->
             <div class="category-search">
-              <div class="input-search-container">
-                <input
-                  class="input-search"
-                  type="text"
-                  placeholder="Tìm kiếm môn học theo tên..."
-                />
-                <img
-                  class="search-icon"
-                  src="../assets/icons/search.png"
-                  alt=""
-                />
+                <div class="category-function">
+                    <select class="select">
+                      <option value="">Lọc theo môn học</option>
+                      <option value="">Đã hoàn thành</option>
+                      <option value="">Chưa hoàn thành</option>
+                    </select>
+                <div class="input-search-container">
+                  <input
+                    class="input-search"
+                    type="text"
+                    placeholder="Tìm kiếm môn học theo tên..."
+                  />
+                  <img
+                    class="search-icon"
+                    src="../assets/icons/search.png"
+                    alt=""
+                  />
+                </div>
               </div>
             </div>
-          </div>
 
           <!-- Danh sách danh mục -->
           <table class="category-table">
             <thead>
               <tr>
+                <th><input type="checkbox" id="selectAll"></th>
                 <th style="color: #667085">
                   Tên môn học
                   <span
+                    ><img
+                      style="width: 10px"
+                      src="../assets/icons/downarrow.png"
+                      alt=""
+                  /></span>
+                </th>
+                <th style="color: #667085;">
+                    Thời gian học
+                    <span
                     ><img
                       style="width: 10px"
                       src="../assets/icons/downarrow.png"
@@ -123,11 +133,13 @@
             </thead>
             <tbody>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Lập trình C</td>
+                <td>45</td>
                 <td>
                   <div class="status status-active">
                     <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
+                    <span>Đã hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -138,11 +150,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Lập trình Frontend với ReactJS</td>
+                <td>40</td>
                 <td>
                   <div class="status status-inactive">
                     <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
+                    <span>Chưa hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -153,11 +167,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Lập trình Backend với Spring boot</td>
+                <td>30</td>
                 <td>
                   <div class="status status-active">
                     <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
+                    <span>Đã hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -168,11 +184,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Lập trình frontend với VueJS</td>
+                <td>10</td>
                 <td>
                   <div class="status status-inactive">
                     <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
+                    <span>Chưa hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -183,11 +201,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Cấu trúc dữ liệu và giải thuật</td>
+                <td>15</td>
                 <td>
                   <div class="status status-active">
                     <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
+                    <span>Đã hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -198,11 +218,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Phân tích và thiết kế hệ thống</td>
+                <td>60</td>
                 <td>
                   <div class="status status-inactive">
                     <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
+                    <span>Chưa hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -213,11 +235,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Toán cao cấp </td>
+                <td>45</td>
                 <td>
                   <div class="status status-active">
                     <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
+                    <span>Đã hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -228,11 +252,13 @@
                 </td>
               </tr>
               <tr>
+                <td><input type="checkbox" class="subjectCheckbox"></td>
                 <td>Tiếng Anh chuyên ngành</td>
+                <td>45</td>
                 <td>
                   <div class="status status-inactive">
                     <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
+                    <span>Chưa hoàn thành</span>
                   </div>
                 </td>
                 <td>
@@ -262,15 +288,33 @@
     <!-- Form thêm mới / cập nhật danh mục -->
     <div style="display: none" id="formCategory" class="overlay">
       <form class="form-category">
-        <div class="form-header">
+        <div id="formHeaderAdd" class="form-header">
           <h3>Thêm mới môn học</h3>
           <img width="24px" id="iconCloseFormCategory" src="../assets/icons/close.png" alt="">
         </div>
 
-        <div class="form-body">
+        <div class="add-new-category">
+            <label for="categoryName">Tên bài học</label>
+            <input type="text" id="categoryName"  />
+            <small id="name-Error" class="error-text-1 d-none">
+                Tên bài học không được để trống
+              </small>
+          </div>
+        <div id="formBodyAdd" class="form-body">
           <label class="form-label">Tên môn học</label>
           <input type="text" id="nameEdit" class="form-control" />
+          <small id="nameError" class="error-text d-none">
+            Tên môn học không được để trống
+          </small>
         </div>
+        <div class="add-new-time">
+            <label for="time">Thời gian học</label>
+            <input type="text" id="lessonName" class="form-control" />
+            <small id="lessonNameError" class="error-text-2 d-none">
+               Thời gian học không được để trống
+            </small>
+        </div>
+
         <div class="form-footer">
           <label class="form-label">Trạng thái</label>
           <div class="changeActive">
@@ -280,7 +324,7 @@
               name="statusEdit"
               value="active"
             />
-            <label for="active">Đang hoạt động</label>
+            <label for="active">Đã hoàn thành</label>
             <input
               type="radio"
               id="inactiveEdit"
@@ -288,7 +332,7 @@
               value="inactive"
               class="ms-3"
             />
-            <label for="inactive">Ngừng hoạt động</label>
+            <label for="inactive">Chưa hoàn thành</label>
           </div>
         </div>
         <div class="foot">
@@ -321,7 +365,7 @@
               name="statusEditt"
               value="active"
             />
-            <label for="active">Đang hoạt động</label>
+            <label for="active">Đã hoàn thành</label>
             <input
               type="radio"
               id="inactiveEditt"
@@ -329,7 +373,7 @@
               value="inactive"
               class="ms-33"
             />
-            <label for="inactive">Ngừng hoạt động</label>
+            <label for="inactive">Chưa hoàn thành</label>
           </div>
         </div>
         <div class="foott">
@@ -341,7 +385,7 @@
     </div>
 
 
-    <script src="../js/category-manager.js"></script>
+    <script src="../js/subject-manager.js"></script>
     <script src="../js/update-manager.js"></script>
   </body>
 </html>

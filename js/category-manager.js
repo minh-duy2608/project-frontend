@@ -27,3 +27,24 @@ iconCloseFormCategoryElement.addEventListener("click", handleClose);
 // Lắng nghe sự kiện click vào button đóng form
 btnCloseFormCategoryElement.addEventListener("click", handleClose);
 
+
+
+const btnAddFormCategory = document.querySelector("#btnAddFormCategory");
+const nameEditInput = document.querySelector("#nameEdit");
+const nameError = document.querySelector("#nameError");
+
+btnAddFormCategory.addEventListener("click", function (event) {
+  event.preventDefault(); 
+
+  if (!nameEditInput.value.trim()) {
+    nameError.classList.remove("d-none");
+    nameError.style.display = "block";
+    nameEditInput.style.border = "2px solid red"; 
+  } else {
+    nameError.classList.add("d-none");
+    nameError.style.display = "none";
+    nameEditInput.style.border = "1px solid #ccc"; 
+    formCategory.style.display = "none";
+   nameEditInput.value = "";
+  }
+});
