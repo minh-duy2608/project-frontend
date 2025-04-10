@@ -24,6 +24,9 @@
           <div class="box-2">
             <label for="email">Email</label>
             <input type="text" name="email" id="email" />
+            <div class="error hidden" id="email-none">Email không được để trống</div>
+            <div class="error hidden" id="invalid-email">Email không đúng định dạng</div>
+            <div class="error hidden" id="email-error">Email không tồn tại</div>
           </div>
         </div>
 
@@ -31,23 +34,30 @@
           <div class="box-3">
             <label for="password">Mật khẩu</label>
             <input type="password" name="password" id="password" />
+            <div class="error hidden" id="password-error">Mật khẩu không chính xác</div>
+            <div class="error hidden" id="password-none">Mật khẩu không được để trống</div>
           </div>
         </div>
 
         <div class="boxx-4">
           <div class="box-4">
-            <input type="checkbox" name="check" id="check" />
+            <input type="checkbox" name="check" id="check" style="cursor: pointer;"/>
             <label for="check">Nhớ tài khoản</label>
           </div>
           <p class="forgetPassword">Quên mật khẩu?</p>
         </div>
-        <button class="button">Đăng nhập</button><br />
+        <div class="mobile-terms hidden">
+          <input type="checkbox" id="terms" />
+          <label for="terms">Bạn đồng ý với <span style="color: #1a0dee; cursor: pointer;">chính sách và điều khoản</span></label>
+        </div>
+        <button id="login-btn" class="button">Đăng nhập</button><br />
         <p class="text">
           Bạn chưa có tài khoản?<a class="sign-in" style="color: #1a0dee;" href="./register.html">Đăng ký</a>
         </p>
         </p>
       </div>
     </div>
+    <script src="../js/login.js"></script>
   </body>
 </html>
 

@@ -24,12 +24,15 @@
           <div class="box-1">
             <label for="fullName">Họ và tên đệm</label>
             <input type="text" name="fullName" id="fullName" />
+            <div class="error hidden" id="fullNameError">
+              Họ và tên không được để trống
+            </div>
           </div>
 
           <div class="box-1">
             <label for="name">Tên</label>
             <input type="text" name="name" id="name" />
-            <div id="userNameError" style="color: red;">Tên không được để trống</div>
+            <div class="error hidden" id="name-none" >Tên không được để trống</div>
           </div>
         </div>
         <div class="boxx-2">
@@ -41,7 +44,7 @@
               id="email"
               placeholder="you@company.com"
             />
-            <div id="emailError" style="color: red;">Email không được để trống</div>
+            <div class="error hidden" id="emailError">Email không được để trống</div>
           </div>
         </div>
 
@@ -49,22 +52,25 @@
           <div class="box-3">
             <label for="password">Mật khẩu</label>
             <input type="password" name="password" id="password" />
-            <div id="passwordError" style="color: red;">Mật khẩu không được để trống</div>
+            <div class="error hidden" id="passwordError" >Mật khẩu không được để trống</div>
           </div>
         </div>
 
         <div class="box-4">
+          <div class="checkbox-wrapper">
           <input type="checkbox" name="check" id="check" />
           <label for="check"
             >Bạn đồng ý với
-            <span style="color: #1a0dee;">chính sách và điều kiện</span></label
+            <span style="color: #1a0dee; cursor: pointer;">chính sách và điều kiện</span></label
           >
         </div>
-        <button class="button">Đăng ký</button><br />
+        </div>
+        <button id="button-register" class="button">Đăng ký</button><br />
         <p class="text">
           Bạn đã có tài khoản?<a class="sign-in" style="color: #1a0dee" href="./login.html"> Đăng nhập</a>
         </p>
       </div>
     </form>
+    <script src="../js/register.js"></script>
   </body>
 </html>

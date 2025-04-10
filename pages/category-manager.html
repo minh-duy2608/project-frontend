@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/category.css" />
     <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/modal-delete.css">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -32,7 +33,7 @@
             />
             <div class="sidebar-text">
               <span class="sidebar-title">Study Tracker</span>
-              <span" class="sidebar-subtitle">Quản lý tiến độ học tập</span>
+              <span class="sidebar-subtitle">Quản lý tiến độ học tập</span>
             </div>
           </div>
 
@@ -45,17 +46,17 @@
               />
               <span>Thống kê</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="../pages/category-manager.html" class="menu-item">
               <img class="item-2" src="../assets/icons/control-1.png" alt="" />
-              <span>Quản lý môn học</span>
+              <span>Quản lý môn học</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="../pages/subject-manager.html" class="menu-item">
               <img class="item-3" src="../assets/icons/control-2.png" alt="" />
               <span>Quản lý bài học</span>
             </a>
           </nav>
         </div>
-        <menu class="menu"> </menu>
+        <menu class="menu"></menu>
       </menu>
       <div class="content">
         <header class="header">
@@ -80,10 +81,10 @@
             <div class="category-header">
               <h3 class="category-title">Môn học</h3>
               <div class="category-function">
-                <select class="select">
-                  <option value="">Lọc theo trạng thái</option>
-                  <option value="">Đang hoạt động</option>
-                  <option value="">Ngừng hoạt động</option>
+                <select class="select"  id="statusFilter">
+                  <option value="all">Lọc theo trạng thái</option>
+                  <option value="active">Đang hoạt động</option>
+                  <option value="inactive">Ngừng hoạt động</option>
                 </select>
                 <button id="buttonAddCategory" class="button">
                   Thêm mới môn học
@@ -126,139 +127,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Lập trình C</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Lập trình Frontend với ReactJS</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Lập trình Backend với Spring boot</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Lập trình frontend với VueJS</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Cấu trúc dữ liệu và giải thuật</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Phân tích và thiết kế hệ thống</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Toán cao cấp </td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đang hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td>Tiếng Anh chuyên ngành</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Ngừng hoạt động</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
             </tbody>
           </table>
 
           <!-- Phần phân trang -->
           <div class="pagination">
-            <button class="page-btn prev"><img class="arrow-left" src="../assets/icons/arrow left.png" alt=""></button>
-            <button class="page-btn">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">4</button>
-            <button class="page-btn">5</button>
-            <button class="page-btn next"><img class="arrow-right" src="../assets/icons/arrow right.png" alt=""></button>
-        </div>
+            <button class="page-btn prev" id="prevPage"><img class="arrow-left" src="../assets/icons/arrow left.png" alt=""></button>
+            <!-- Các nút số trang sẽ được tạo động bằng JavaScript -->
+            <button class="page-btn next" id="nextPage"><img class="arrow-right" src="../assets/icons/arrow right.png" alt=""></button>
+          </div>
         </main>
       </div>
     </div>
@@ -306,8 +183,7 @@
       </form>
     </div>
 
-
-
+    <!--Phần icon bút-->
     <div style="display: none" id="formCategoryy" class="overlayy">
       <form class="form-categoryy">
         <div class="form-headerr">
@@ -347,7 +223,42 @@
       </form>
     </div>
 
+       <!--Modal xóa-->
+       <div id="deleteModal" style="display: none;">
+        <div class="containerDeleteModal">
+          <div class="boxDelete-1">
+            <img height="48px" width="48px" src="../assets/icons/alert.png" alt="">
+            <p class="accept">Xác nhận</p>
+            <p class="textDelete-1">
+              Bạn có chắc chắn muốn xóa môn học
+              <span class="textDelete-2" id="deleteCategoryName">Lập trình cơ bản Frontend Fundamental</span>
+              khỏi hệ thống không?
+            </p>
+          </div>
+          <div class="boxDelete-2">
+            <button class="btn-cancel" id="cancelDeleteBtn">Hủy</button>
+            <button class="btn-delete" id="confirmDeleteBtn">Xóa</button>
+          </div>
+        </div>
+      </div>
 
+
+      <!--Modal xóa thành công-->
+      <div class="toast success-toast" id="successToast">
+        <div class="toast-icon">
+            <img src="../assets/icons/greencheck.png" alt="" />
+        </div>
+        <div class="toast-content">
+            <p class="toast-title">Thành công</p>
+            <p class="toast-message">Xóa bài học thành công</p>
+        </div>
+        <img class="deleteIcon toast-close" id="closeSuccessToast" src="../assets/icons/_BaseCloseButton.png" alt="">
+    </div>
+
+    <!-- Menu đăng xuất -->
+    <div id="logoutMenu" class="logout-menu" style="display: none;">
+      <button id="logoutBtn" class="logout-btn">Đăng xuất</button>
+    </div>
     <script src="../js/category-manager.js"></script>
     <script src="../js/update-manager.js"></script>
   </body>

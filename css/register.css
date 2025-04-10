@@ -4,6 +4,8 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    margin: 0;
 }
 
 .container{
@@ -132,6 +134,27 @@ body{
     flex: 1;
 }
 
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #667085;
+    flex-wrap: wrap;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+    margin: 0;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  
+  .checkbox-wrapper .highlight {
+    color: #1a0dee;
+  }
+
 .text{
     text-align: center;
 }
@@ -142,4 +165,55 @@ body{
 
 button:hover{
     background-color: #69b0c7;
+}
+
+.error{
+    font-size: 14px;
+    color: red;
+}
+
+.hidden{
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 40px 20px;
+        margin-top: 0;
+        width: 100%;
+    }
+
+    .container .header {
+        margin-top: 40px;
+        gap: 12px;
+    }
+
+    .container .h1,
+    .container .h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .main {
+        gap: 16px;
+        width: 100%;
+    }
+
+    .main input {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .boxx-1,
+    .boxx-2,
+    .boxx-3 {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .button {
+        width: 100%;
+        font-size: 16px;
+    }
 }

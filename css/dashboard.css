@@ -195,4 +195,5 @@ h2 {
     gap: 36.33px;
     text-align: left;
     padding: 24px 160px 104px;
+    cursor: pointer;
 }

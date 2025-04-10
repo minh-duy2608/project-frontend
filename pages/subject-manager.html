@@ -32,7 +32,7 @@
             />
             <div class="sidebar-text">
               <span class="sidebar-title">Study Tracker</span>
-              <span" class="sidebar-subtitle">Quản lý tiến độ học tập</span>
+              <span class="sidebar-subtitle">Quản lý tiến độ học tập</span>
             </div>
           </div>
 
@@ -45,11 +45,11 @@
               />
               <span>Thống kê</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="../pages/category-manager.html" class="menu-item">
               <img class="item-2" src="../assets/icons/control-1.png" alt="" />
               <span>Quản lý môn học</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="../pages/subject-manager.html" class="menu-item">
               <img class="item-3" src="../assets/icons/control-2.png" alt="" />
               <span>Quản lý bài học</span>
             </a>
@@ -75,34 +75,34 @@
             <!-- Phạm vi của phần tiêu đề -->
             <div class="category-header">
               <h3 class="category-title">Bài học</h3>
-                <button id="buttonAddCategory" class="button">
-                  Thêm mới môn học
-                </button>
-              </div>
+              <button id="buttonAddCategory" class="button">
+                Thêm mới bài học
+              </button>
             </div>
+          </div>
 
-            <!-- Phạm vi của phần chức năng -->
-            <div class="category-search">
-                <div class="category-function">
-                    <select class="select">
-                      <option value="">Lọc theo môn học</option>
-                      <option value="">Đã hoàn thành</option>
-                      <option value="">Chưa hoàn thành</option>
-                    </select>
-                <div class="input-search-container">
-                  <input
-                    class="input-search"
-                    type="text"
-                    placeholder="Tìm kiếm môn học theo tên..."
-                  />
-                  <img
-                    class="search-icon"
-                    src="../assets/icons/search.png"
-                    alt=""
-                  />
-                </div>
+          <!-- Phạm vi của phần chức năng -->
+          <div class="category-search">
+            <div class="category-function">
+              <select class="select" id="statusFilter">
+                <option value="all">Lọc theo trạng thái</option>
+                <option value="active">Đã hoàn thành</option>
+                <option value="inactive">Chưa hoàn thành</option>
+              </select>
+              <div class="input-search-container">
+                <input
+                  class="input-search"
+                  type="text"
+                  placeholder="Tìm kiếm bài học theo tên..."
+                />
+                <img
+                  class="search-icon"
+                  src="../assets/icons/search.png"
+                  alt=""
+                />
               </div>
             </div>
+          </div>
 
           <!-- Danh sách danh mục -->
           <table class="category-table">
@@ -110,7 +110,7 @@
               <tr>
                 <th><input type="checkbox" id="selectAll"></th>
                 <th style="color: #667085">
-                  Tên môn học
+                  Tên bài học
                   <span
                     ><img
                       style="width: 10px"
@@ -118,9 +118,9 @@
                       alt=""
                   /></span>
                 </th>
-                <th style="color: #667085;">
-                    Thời gian học
-                    <span
+                <th style="color: #667085">
+                  Thời gian học
+                  <span
                     ><img
                       style="width: 10px"
                       src="../assets/icons/downarrow.png"
@@ -132,155 +132,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Lập trình C</td>
-                <td>45</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đã hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Lập trình Frontend với ReactJS</td>
-                <td>40</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Chưa hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Lập trình Backend với Spring boot</td>
-                <td>30</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đã hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Lập trình frontend với VueJS</td>
-                <td>10</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Chưa hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Cấu trúc dữ liệu và giải thuật</td>
-                <td>15</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đã hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Phân tích và thiết kế hệ thống</td>
-                <td>60</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Chưa hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Toán cao cấp </td>
-                <td>45</td>
-                <td>
-                  <div class="status status-active">
-                    <div class="dot active"></div>
-                    <span>Đã hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
-              <tr>
-                <td><input type="checkbox" class="subjectCheckbox"></td>
-                <td>Tiếng Anh chuyên ngành</td>
-                <td>45</td>
-                <td>
-                  <div class="status status-inactive">
-                    <div class="dot inactive"></div>
-                    <span>Chưa hoàn thành</span>
-                  </div>
-                </td>
-                <td>
-                  <img class="trash" src="../assets/icons/trash.png" alt="">
-                  <img id="changePen" class="pen" src="../assets/icons/pen.png" alt="">
-                </td>
-                <td>
-                </td>
-              </tr>
             </tbody>
           </table>
 
           <!-- Phần phân trang -->
           <div class="pagination">
-            <button class="page-btn prev"><img class="arrow-left" src="../assets/icons/arrow left.png" alt=""></button>
-            <button class="page-btn">1</button>
-            <button class="page-btn">2</button>
-            <button class="page-btn">3</button>
-            <button class="page-btn">4</button>
-            <button class="page-btn">5</button>
-            <button class="page-btn next"><img class="arrow-right" src="../assets/icons/arrow right.png" alt=""></button>
-        </div>
+            <button class="page-btn prev" id="prevPage"><img class="arrow-left" src="../assets/icons/arrow left.png" alt=""></button>
+            <!-- Các nút số trang sẽ được tạo động bằng JavaScript -->
+            <button class="page-btn next" id="nextPage"><img class="arrow-right" src="../assets/icons/arrow right.png" alt=""></button>
+          </div>
         </main>
       </div>
     </div>
@@ -289,30 +149,30 @@
     <div style="display: none" id="formCategory" class="overlay">
       <form class="form-category">
         <div id="formHeaderAdd" class="form-header">
-          <h3>Thêm mới môn học</h3>
+          <h3>Thêm mới môn học</h3>
           <img width="24px" id="iconCloseFormCategory" src="../assets/icons/close.png" alt="">
         </div>
 
         <div class="add-new-category">
-            <label for="categoryName">Tên bài học</label>
-            <input type="text" id="categoryName"  />
-            <small id="name-Error" class="error-text-1 d-none">
-                Tên bài học không được để trống
-              </small>
-          </div>
+          <label for="categoryName">Tên bài học</label>
+          <input type="text" id="categoryName" />
+          <small id="name-Error" class="error-text-1 d-none">
+            Tên bài học không được để trống
+          </small>
+        </div>
         <div id="formBodyAdd" class="form-body">
-          <label class="form-label">Tên môn học</label>
+          <label class="form-label">Loại môn học</label>
           <input type="text" id="nameEdit" class="form-control" />
           <small id="nameError" class="error-text d-none">
-            Tên môn học không được để trống
+            Loại môn học không được để trống
           </small>
         </div>
         <div class="add-new-time">
-            <label for="time">Thời gian học</label>
-            <input type="text" id="lessonName" class="form-control" />
-            <small id="lessonNameError" class="error-text-2 d-none">
-               Thời gian học không được để trống
-            </small>
+          <label for="lessonName">Thời gian học</label>
+          <input type="text" id="lessonName" class="form-control" />
+          <small id="lessonNameError" class="error-text-2 d-none">
+            Thời gian học không được để trống
+          </small>
         </div>
 
         <div class="form-footer">
@@ -324,7 +184,7 @@
               name="statusEdit"
               value="active"
             />
-            <label for="active">Đã hoàn thành</label>
+            <label for="activeEdit">Đã hoàn thành</label>
             <input
               type="radio"
               id="inactiveEdit"
@@ -332,60 +192,52 @@
               value="inactive"
               class="ms-3"
             />
-            <label for="inactive">Chưa hoàn thành</label>
+            <label for="inactiveEdit">Chưa hoàn thành</label>
           </div>
         </div>
         <div class="foot">
-          <button id="btnCloseFormCategory">Hủy</button>
-          <button id="btnAddFormCategory" >Thêm</button>
+          <button type="button" id="btnCloseFormCategory">Hủy</button>
+          <button type="button" id="btnAddFormCategory">Thêm</button>
         </div>
-      </div>
       </form>
     </div>
 
-
-
-    <div style="display: none" id="formCategoryy" class="overlayy">
-      <form class="form-categoryy">
-        <div class="form-headerr">
-          <h3>Cập nhật môn học</h3>
-          <img width="24px" id="iconCloseFormCategoryy" src="../assets/icons/close.png" alt="">
+    <!-- Modal xóa -->
+    <div id="deleteModal" style="display: none;" class="overlay">
+      <div class="containerDeleteModal">
+        <div class="boxDelete-1">
+          <img height="48px" width="48px" src="../assets/icons/alert.png" alt="">
+          <p class="accept">Xác nhận</p>
+          <p class="textDelete-1">
+            Bạn có chắc chắn muốn xóa môn học
+            <span class="textDelete-2" id="deleteCategoryName"></span>
+            khỏi hệ thống không?
+          </p>
         </div>
-
-        <div class="form-bodyy">
-          <label class="form-labell">Tên môn học</label>
-          <input type="text" id="nameEditt" class="form-controll" />
-        </div>
-        <div class="form-footerr">
-          <label class="form-labell">Trạng thái</label>
-          <div class="changeActivee">
-            <input
-              type="radio"
-              id="activeEditt"
-              name="statusEditt"
-              value="active"
-            />
-            <label for="active">Đã hoàn thành</label>
-            <input
-              type="radio"
-              id="inactiveEditt"
-              name="statusEditt"
-              value="inactive"
-              class="ms-33"
-            />
-            <label for="inactive">Chưa hoàn thành</label>
-          </div>
-        </div>
-        <div class="foott">
-          <button id="btnCloseFormCategoryy">Hủy</button>
-          <button id="btnAddFormCategoryy" >Thêm</button>
+        <div class="boxDelete-2">
+          <button class="btn-cancel" id="cancelDeleteBtn">Hủy</button>
+          <button class="btn-delete" id="confirmDeleteBtn">Xóa</button>
         </div>
       </div>
-      </form>
+    </div>
+
+    <!-- Toast thông báo thành công -->
+    <div style="display: none" class="toast success-toast" id="successToast">
+      <div class="toast-icon">
+        <img src="../assets/icons/greencheck.png" alt="success" />
+      </div>
+      <div class="toast-content">
+        <p class="toast-title">Thành công</p>
+        <p class="toast-message">Xóa bài học thành công</p>
+      </div>
+      <img class="deleteIcon toast-close" id="closeSuccessToast" src="../assets/icons/_BaseCloseButton.png" alt="">
     </div>
 
 
+    <!-- Menu đăng xuất -->
+  <div id="logoutMenu" class="logout-menu" style="display: none;">
+    <button id="logoutBtn" class="logout-btn">Đăng xuất</button>
+  </div>
     <script src="../js/subject-manager.js"></script>
-    <script src="../js/update-manager.js"></script>
   </body>
 </html>
