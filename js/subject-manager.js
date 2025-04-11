@@ -18,14 +18,15 @@ const prevPageBtn = document.querySelector("#prevPage");
 const nextPageBtn = document.querySelector("#nextPage");
 const paginationContainer = document.querySelector(".pagination");
 const menuItems = document.querySelectorAll(".menu-item");
-const avatarIcon = document.querySelector(".img-4"); // Icon avatar
-const logoutMenu = document.querySelector("#logoutMenu"); // Menu đăng xuất
-const logoutBtn = document.querySelector("#logoutBtn"); // Nút đăng xuất
+const avatarIcon = document.querySelector(".img-4");
+const logoutMenu = document.querySelector("#logoutMenu");
+const logoutBtn = document.querySelector("#logoutBtn");
 
 let currentFilterStatus = "all";
 let currentSearchTerm = "";
 let currentPage = 1;
-const itemsPerPage = 8; // Số bài học mỗi trang
+const itemsPerPage = 8;
+let sortDirection = "asc"; // Biến theo dõi hướng sắp xếp: "asc" (tăng dần) hoặc "desc" (giảm dần)
 
 // Kiểm tra các phần tử DOM
 console.log("buttonAddCategoryElement:", buttonAddCategoryElement);
@@ -115,8 +116,8 @@ function toggleLogoutMenu() {
 
 // Hàm xử lý đăng xuất
 function handleLogout() {
-  localStorage.removeItem("user"); // Xóa thông tin người dùng nếu có
-  window.location.href = "../pages/login.html"; // Chuyển hướng về trang đăng nhập
+  localStorage.removeItem("user");
+  window.location.href = "../pages/login.html";
 }
 
 // Sự kiện
@@ -226,6 +227,17 @@ function filterByStatus(status) {
   if (currentSearchTerm) {
     data = data.filter(item => item.categoryName.toLowerCase().includes(currentSearchTerm));
   }
+
+  // Sắp xếp dữ liệu theo tên bài học
+  data.sort((a, b) => {
+    const nameA = a.categoryName.toLowerCase();
+    const nameB = b.categoryName.toLowerCase();
+    if (sortDirection === "asc") {
+      return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+    } else {
+      return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
+    }
+  });
 
   renderPaginatedTable(data);
 }
@@ -362,8 +374,20 @@ function handleAddSubject(event) {
     categoryNameInput.style.border = "1px solid #dadada";
   }
 
+  const subjects = getFromLocalStorage();
+  const isNameExist = subjects.some(
+    (subject) => subject.categoryName.toLowerCase() === categoryNameValue.toLowerCase()
+  );
+  if (isNameExist) {
+    nameErrorCategory.textContent = "Tên bài học đã tồn tại";
+    nameErrorCategory.style.display = "block";
+    categoryNameInput.style.border = "2px solid red";
+    isValid = false;
+    console.log("Validate thất bại: Tên bài học trùng lặp");
+  }
+
   if (!nameValue) {
-    nameError.textContent = "Tên môn học không được để trống";
+    nameError.textContent = "Loại môn học không được để trống";
     nameError.style.display = "block";
     nameEditInput.style.border = "2px solid red";
     isValid = false;
@@ -373,7 +397,7 @@ function handleAddSubject(event) {
   }
 
   if (!lessonTimeValue || isNaN(lessonTimeValue) || parseInt(lessonTimeValue) <= 0) {
-    lessonNameError.textContent = "Thời gian học phải là số dương";
+    lessonNameError.textContent = "Nhập gian học (phải là số dương)";
     lessonNameError.style.display = "block";
     lessonNameInput.style.border = "2px solid red";
     isValid = false;
@@ -396,7 +420,6 @@ function handleAddSubject(event) {
     status: isActive ? "active" : "inactive",
   };
 
-  const subjects = getFromLocalStorage();
   subjects.push(newSubject);
   saveToLocalStorage(subjects);
   currentPage = 1;
@@ -426,6 +449,18 @@ function handleEditSubject(event, index) {
   } else {
     nameErrorCategory.style.display = "none";
     categoryNameInput.style.border = "1px solid #dadada";
+  }
+
+  const isNameExist = data.some(
+    (subject, i) =>
+      i !== index && subject.categoryName.toLowerCase() === updatedCategoryName.toLowerCase()
+  );
+  if (isNameExist) {
+    nameErrorCategory.textContent = "Tên bài học đã tồn tại";
+    nameErrorCategory.style.display = "block";
+    categoryNameInput.style.border = "2px solid red";
+    isValid = false;
+    console.log("Validate thất bại: Tên bài học trùng lặp");
   }
 
   if (!updatedName) {
@@ -616,3 +651,18 @@ if (closeSuccessToastBtn && successToast) {
     successToast.style.display = "none";
   });
 }
+
+// Gắn sự kiện sắp xếp khi nhấp vào tiêu đề "Tên bài học"
+document.addEventListener("DOMContentLoaded", () => {
+  const nameHeader = document.querySelector(".category-table th:nth-child(2)"); // Cột "Tên bài học" là cột thứ 2
+  if (nameHeader) {
+    nameHeader.style.cursor = "pointer"; // Thêm con trỏ để biểu thị có thể nhấp
+    nameHeader.addEventListener("click", () => {
+      sortDirection = sortDirection === "asc" ? "desc" : "asc"; // Chuyển đổi hướng sắp xếp
+      filterByStatus(currentFilterStatus); // Gọi lại hàm lọc và sắp xếp
+      console.log("Sắp xếp theo tên bài học:", sortDirection);
+    });
+  } else {
+    console.error("Không tìm thấy tiêu đề cột 'Tên bài học'");
+  }
+});

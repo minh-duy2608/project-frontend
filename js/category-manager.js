@@ -12,15 +12,16 @@ const searchInput = document.querySelector(".input-search");
 const prevPageBtn = document.querySelector("#prevPage");
 const nextPageBtn = document.querySelector("#nextPage");
 const paginationContainer = document.querySelector(".pagination");
-const menuItems = document.querySelectorAll(".menu-item"); // Thêm menu items
-const avatarIcon = document.querySelector(".img-4"); // Icon avatar
-const logoutMenu = document.querySelector("#logoutMenu"); // Menu đăng xuất
-const logoutBtn = document.querySelector("#logoutBtn"); // Nút đăng xuất
+const menuItems = document.querySelectorAll(".menu-item");
+const avatarIcon = document.querySelector(".img-4");
+const logoutMenu = document.querySelector("#logoutMenu");
+const logoutBtn = document.querySelector("#logoutBtn");
 
 let currentFilterStatus = "all";
 let currentSearchTerm = "";
 let currentPage = 1;
-const itemsPerPage = 8; // Số danh mục mỗi trang
+const itemsPerPage = 8;
+let sortDirection = "asc"; // Biến theo dõi hướng sắp xếp: "asc" (tăng dần) hoặc "desc" (giảm dần)
 
 // Kiểm tra các phần tử DOM
 console.log("buttonAddCategoryElement:", buttonAddCategoryElement);
@@ -78,9 +79,9 @@ function resetForm() {
 // Hàm làm nổi bật mục được chọn trong menu
 function highlightMenuItem(selectedItem) {
   menuItems.forEach(item => {
-    item.classList.remove("active"); // Xóa lớp active khỏi tất cả các mục
+    item.classList.remove("active");
   });
-  selectedItem.classList.add("active"); // Thêm lớp active vào mục được chọn
+  selectedItem.classList.add("active");
 }
 
 // Hàm hiển thị/ẩn menu đăng xuất
@@ -96,8 +97,8 @@ function toggleLogoutMenu() {
 
 // Hàm xử lý đăng xuất
 function handleLogout() {
-  localStorage.removeItem("user"); // Xóa thông tin người dùng nếu có
-  window.location.href = "../pages/login.html"; // Chuyển hướng về trang đăng nhập
+  localStorage.removeItem("user");
+  window.location.href = "../pages/login.html";
 }
 
 // Sự kiện
@@ -107,14 +108,14 @@ if (btnCloseFormCategoryElement) btnCloseFormCategoryElement.addEventListener("c
 if (statusFilter) {
   statusFilter.addEventListener("change", function () {
     currentFilterStatus = this.value;
-    currentPage = 1; // Reset về trang 1 khi lọc
+    currentPage = 1;
     filterByStatus(currentFilterStatus);
   });
 }
 if (searchInput) {
   searchInput.addEventListener("input", function () {
     currentSearchTerm = this.value.trim().toLowerCase();
-    currentPage = 1; // Reset về trang 1 khi tìm kiếm
+    currentPage = 1;
     filterByStatus(currentFilterStatus);
   });
 }
@@ -122,12 +123,11 @@ if (searchInput) {
 // Gắn sự kiện click cho từng mục menu
 menuItems.forEach(item => {
   item.addEventListener("click", function (e) {
-    e.preventDefault(); // Ngăn hành vi mặc định của thẻ <a>
-    highlightMenuItem(this); // Làm nổi bật mục được nhấn
-
+    e.preventDefault();
+    highlightMenuItem(this);
     const href = this.getAttribute("href");
     if (href && href !== "#") {
-      window.location.href = href; // Chuyển hướng đến trang được chỉ định trong href
+      window.location.href = href;
     }
   });
 });
@@ -184,15 +184,24 @@ function filterByStatus(status) {
   currentFilterStatus = status;
   let data = getFromLocalStorage();
 
-  // Lọc theo trạng thái
   if (status !== "all") {
     data = data.filter(item => item.status === status);
   }
 
-  // Lọc theo từ khóa tìm kiếm
   if (currentSearchTerm) {
     data = data.filter(item => item.name.toLowerCase().includes(currentSearchTerm));
   }
+
+  // Sắp xếp dữ liệu theo tên danh mục
+  data.sort((a, b) => {
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (sortDirection === "asc") {
+      return nameA < nameB ? -1 : nameA > nameB ? 1 : 0;
+    } else {
+      return nameA > nameB ? -1 : nameA < nameB ? 1 : 0;
+    }
+  });
 
   renderPaginatedTable(data);
 }
@@ -207,7 +216,6 @@ function renderPaginatedTable(data) {
   const totalItems = data.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
 
-  // Tính chỉ số bắt đầu và kết thúc của dữ liệu trên trang hiện tại
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
   const paginatedData = data.slice(startIndex, endIndex);
@@ -227,7 +235,7 @@ function renderPaginatedTable(data) {
   }
 
   paginatedData.forEach((item, index) => {
-    const globalIndex = startIndex + index; // Chỉ số toàn cục trong mảng dữ liệu gốc
+    const globalIndex = startIndex + index;
     const row = document.createElement("tr");
     row.innerHTML = `
       <td>${item.name}</td>
@@ -246,7 +254,6 @@ function renderPaginatedTable(data) {
     tbody.appendChild(row);
   });
 
-  // Render phân trang
   renderPagination(totalPages);
 
   console.log("Bảng đã được cập nhật với", paginatedData.length, "dòng trên trang", currentPage);
@@ -274,7 +281,6 @@ function renderPagination(totalPages) {
     <button class="page-btn next" id="nextPage"><img class="arrow-right" src="../assets/icons/arrow right.png" alt=""></button>
   `;
 
-  // Gắn lại sự kiện cho nút "Trước" và "Sau"
   const prevPageBtn = document.querySelector("#prevPage");
   const nextPageBtn = document.querySelector("#nextPage");
 
@@ -312,6 +318,7 @@ function handleAddCategory(event) {
 
   let isValid = true;
 
+  // Kiểm tra tên trống
   if (!nameValue) {
     nameError.textContent = "Tên môn học không được để trống";
     nameError.style.display = "block";
@@ -320,6 +327,20 @@ function handleAddCategory(event) {
     console.log("Validate thất bại: Tên trống");
   }
 
+  // Kiểm tra trùng tên
+  const categories = getFromLocalStorage();
+  const isNameExist = categories.some(
+    (category) => category.name.toLowerCase() === nameValue.toLowerCase()
+  );
+  if (isNameExist) {
+    nameError.textContent = "Tên môn học đã tồn tại";
+    nameError.style.display = "block";
+    nameEditInput.style.border = "2px solid red";
+    isValid = false;
+    console.log("Validate thất bại: Tên môn học trùng lặp");
+  }
+
+  // Kiểm tra trạng thái
   if (!isActive && !isInactive) {
     isValid = false;
     console.log("Validate thất bại: Không chọn trạng thái");
@@ -332,10 +353,9 @@ function handleAddCategory(event) {
     status: isActive ? "active" : "inactive",
   };
 
-  const categories = getFromLocalStorage();
   categories.push(newCategory);
   saveToLocalStorage(categories);
-  currentPage = 1; // Reset về trang 1 khi thêm mới
+  currentPage = 1;
   filterByStatus(currentFilterStatus);
   handleCloseForm();
 }
@@ -350,8 +370,25 @@ function handleEditCategory(event, index) {
   const updatedStatus = activeEdit && activeEdit.checked ? "active" : "inactive";
   const data = getFromLocalStorage();
 
+  nameError.textContent = "";
+  nameError.style.display = "none";
+  nameEditInput.style.border = "1px solid #ccc";
+
+  // Kiểm tra tên trống
   if (!updatedName) {
     nameError.textContent = "Tên môn học không được để trống";
+    nameError.style.display = "block";
+    nameEditInput.style.border = "2px solid red";
+    return;
+  }
+
+  // Kiểm tra trùng tên (ngoại trừ danh mục đang chỉnh sửa)
+  const isNameExist = data.some(
+    (category, i) =>
+      i !== index && category.name.toLowerCase() === updatedName.toLowerCase()
+  );
+  if (isNameExist) {
+    nameError.textContent = "Tên môn học đã tồn tại";
     nameError.style.display = "block";
     nameEditInput.style.border = "2px solid red";
     return;
@@ -458,7 +495,7 @@ if (confirmDeleteBtn) {
       const data = getFromLocalStorage();
       data.splice(currentDeleteIndex, 1);
       saveToLocalStorage(data);
-      currentPage = 1; // Reset về trang 1 khi xóa
+      currentPage = 1;
       filterByStatus(currentFilterStatus);
       closeDeleteModal();
       showSuccessToast();
@@ -473,7 +510,7 @@ renderTable();
 
 // Làm nổi bật mục sidebar tương ứng với trang hiện tại
 const currentPath = window.location.pathname;
-let currentSection = "statistics"; // Mặc định là Thống kê
+let currentSection = "statistics";
 if (currentPath.includes("category-manager.html")) {
   currentSection = "categories";
 } else if (currentPath.includes("subject-manager.html")) {
@@ -481,9 +518,9 @@ if (currentPath.includes("category-manager.html")) {
 }
 
 const menuItemMap = {
-  "statistics": document.querySelector(".menu-item:nth-child(1)"), // Thống kê
-  "categories": document.querySelector(".menu-item:nth-child(2)"), // Quản lý môn học
-  "subjects": document.querySelector(".menu-item:nth-child(3)")    // Quản lý bài học
+  "statistics": document.querySelector(".menu-item:nth-child(1)"),
+  "categories": document.querySelector(".menu-item:nth-child(2)"),
+  "subjects": document.querySelector(".menu-item:nth-child(3)")
 };
 
 const defaultItem = menuItemMap[currentSection];
@@ -509,3 +546,18 @@ if (closeSuccessToastBtn && successToast) {
     successToast.style.display = "none";
   });
 }
+
+// Gắn sự kiện sắp xếp khi nhấp vào tiêu đề "Tên môn học"
+document.addEventListener("DOMContentLoaded", () => {
+  const nameHeader = document.querySelector(".category-table th:nth-child(1)"); // Cột "Tên môn học" là cột thứ 1
+  if (nameHeader) {
+    nameHeader.style.cursor = "pointer"; // Thêm con trỏ để biểu thị có thể nhấp
+    nameHeader.addEventListener("click", () => {
+      sortDirection = sortDirection === "asc" ? "desc" : "asc"; // Chuyển đổi hướng sắp xếp
+      filterByStatus(currentFilterStatus); // Gọi lại hàm lọc và sắp xếp
+      console.log("Sắp xếp theo tên môn học:", sortDirection);
+    });
+  } else {
+    console.error("Không tìm thấy tiêu đề cột 'Tên môn học'");
+  }
+});
